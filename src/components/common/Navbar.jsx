@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const Navbar = () => {
+const Navbar = ({ onNavigate }) => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -19,16 +19,21 @@ const Navbar = () => {
     return () => document.body.classList.remove('menu-open')
   }, [menuOpen])
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      const offsetTop = element.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
-      setMenuOpen(false)
+  const navigateToSection = (id, label) => {
+    if (onNavigate) {
+      onNavigate(id, label)
+    } else {
+      const element = document.getElementById(id)
+      if (element) {
+        const offsetTop = element.offsetTop - 80
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        })
+      }
     }
+
+    setMenuOpen(false)
   }
 
   return (
@@ -40,15 +45,15 @@ const Navbar = () => {
         </div>
         <div className="nav-right">
           <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <span className="nav-link" onClick={() => scrollToSection('home')}>Home</span>
-            <span className="nav-link" onClick={() => scrollToSection('about')}>About</span>
-            <span className="nav-link" onClick={() => scrollToSection('services')}>Services</span>
-            <span className="nav-link" onClick={() => scrollToSection('gallery')}>Gallery</span>
-            <span className="nav-link" onClick={() => scrollToSection('plans')}>Plans</span>
-            <span className="nav-link" onClick={() => scrollToSection('contact')}>Contact</span>
-            <button className="cta-btn" onClick={() => scrollToSection('contact')}>Join Now</button>
+            <span className="nav-link" onClick={() => navigateToSection('home', 'Home')}>Home</span>
+            <span className="nav-link" onClick={() => navigateToSection('about', 'About')}>About</span>
+            <span className="nav-link" onClick={() => navigateToSection('services', 'Services')}>Services</span>
+            <span className="nav-link" onClick={() => navigateToSection('gallery', 'Gallery')}>Gallery</span>
+            <span className="nav-link" onClick={() => navigateToSection('plans', 'Plans')}>Plans</span>
+            <span className="nav-link" onClick={() => navigateToSection('contact', 'Contact')}>Contact</span>
+            <button className="cta-btn" onClick={() => navigateToSection('contact', 'Contact')}>Join Now</button>
           </div>
-          <button className="cta-btn mobile-join-btn" onClick={() => scrollToSection('contact')}>Join Now</button>
+          <button className="cta-btn mobile-join-btn" onClick={() => navigateToSection('contact', 'Contact')}>Join Now</button>
           <div
             className={`hamburger ${menuOpen ? 'active' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}

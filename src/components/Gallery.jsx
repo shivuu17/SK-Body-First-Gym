@@ -109,10 +109,6 @@ const Gallery = () => {
               onClick={() => openLightbox(image, index)}
             >
               <img src={image.src} alt={image.caption} />
-              <div className="gallery-overlay">
-                <i className="fas fa-search-plus"></i>
-                <p>{image.caption}</p>
-              </div>
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 const Plans = () => {
   const plans = [
-    { name: "BASIC", icon: "running", price: "1,999", features: [
+    { name: "BASIC", icon: "running", price: "1,999", period: "1 month", features: [
       { included: true, text: "Access to gym equipment" },
       { included: true, text: "Cardio & weight training" },
       { included: true, text: "Locker facility" },
@@ -9,7 +9,7 @@ const Plans = () => {
       { included: false, text: "Nutrition plan" },
       { included: false, text: "Group classes" }
     ] },
-    { name: "PRO", icon: "fire", price: "3,999", popular: true, features: [
+    { name: "PRO", icon: "fire", price: "7,999", period: "6 month", popular: true, features: [
       { included: true, text: "All Basic features" },
       { included: true, text: "8 personal training sessions" },
       { included: true, text: "Group classes (Yoga, Zumba)" },
@@ -18,7 +18,7 @@ const Plans = () => {
       { included: true, text: "Progress tracking" },
       { included: true, text: "Priority booking" }
     ] },
-    { name: "ELITE", icon: "crown", price: "6,999", features: [
+    { name: "ELITE", icon: "crown", price: "11,999", period: "1 year", features: [
       { included: true, text: "All Pro features" },
       { included: true, text: "Unlimited personal training" },
       { included: true, text: "All group classes" },
@@ -59,7 +59,7 @@ const Plans = () => {
               <div className="plan-price">
                 <span className="currency">₹</span>
                 <span className="amount">{plan.price}</span>
-                <span className="period">/month</span>
+                <span className="period">/{plan.period}</span>
               </div>
               <ul className="plan-features">
                 {plan.features.map((feature, idx) => (

@@ -4,6 +4,7 @@ const Plans = () => {
       name: "BASIC",
       icon: "running",
       price: "1,999",
+      period: "1 month",
       features: [
         { included: true, text: "Access to gym equipment" },
         { included: true, text: "Cardio & weight training" },
@@ -17,7 +18,8 @@ const Plans = () => {
     {
       name: "PRO",
       icon: "fire",
-      price: "3,999",
+      price: "7,999",
+      period: "6 month",
       popular: true,
       features: [
         { included: true, text: "All Basic features" },
@@ -32,7 +34,8 @@ const Plans = () => {
     {
       name: "ELITE",
       icon: "crown",
-      price: "6,999",
+      price: "11,999",
+      period: "1 year",
       features: [
         { included: true, text: "All Pro features" },
         { included: true, text: "Unlimited personal training" },
@@ -77,7 +80,7 @@ const Plans = () => {
               <div className="plan-price">
                 <span className="currency">₹</span>
                 <span className="amount">{plan.price}</span>
-                <span className="period">/month</span>
+                <span className="period">/{plan.period}</span>
               </div>
               <ul className="plan-features">
                 {plan.features.map((feature, idx) => (

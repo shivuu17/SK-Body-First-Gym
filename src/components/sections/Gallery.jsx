@@ -7,16 +7,25 @@ const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const images = [
-    { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800", category: "workout", caption: "Modern Workout Area" },
-    { src: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800", category: "machines", caption: "Premium Equipment" },
-    { src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800", category: "trainers", caption: "Expert Trainers" },
-    { src: "https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=800", category: "members", caption: "Active Members" },
-    { src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800", category: "workout", caption: "Cardio Zone" },
-    { src: "https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=800", category: "machines", caption: "State-of-the-art Machines" },
-    { src: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800", category: "events", caption: "Fitness Events" },
-    { src: "https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?w=800", category: "workout", caption: "CrossFit Area" },
-    { src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800", category: "members", caption: "Personal Training" }
-  ]
+    { src: "/assets/gallery/workout/8.jpeg", category: "workout", caption: "Modern Workout Area" },  
+    { src: "/assets/gallery/workout/9.jpeg", category: "workout", caption: "Modern Workout Area" },
+    { src: "/assets/gallery/workout/10.jpeg", category: "workout", caption: "Modern Workout Area" },
+    { src: "/assets/gallery/workout/14.jpeg", category: "workout", caption: "Modern Workout Area" },
+    { src: "/assets/gallery/workout/15.jpeg", category: "workout", caption: "Modern Workout Area" },
+    { src: "/assets/gallery/workout/1.j.jpeg", category: "workout", caption: "CrossFit Area" },
+    { src: "/assets/gallery/workout/2.jpeg", category: "workout", caption: "Cardio Zone" },
+    { src: "/assets/gallery/machines/17.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/13.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/7.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/12.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/5.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/16.jpeg", category: "machines", caption: "Premium Equipment" },
+    { src: "/assets/gallery/machines/6.jpeg", category: "machines", caption: "Premium Equipment" },
+    
+  
+
+  ] 
+
 
   const filteredImages = activeFilter === 'all' ? images : images.filter(img => img.category === activeFilter)
 
@@ -71,10 +80,6 @@ const Gallery = () => {
           {filteredImages.map((image, index) => (
             <div key={index} className="gallery-item" onClick={() => openLightbox(image, index)}>
               <img src={image.src} alt={image.caption} />
-              <div className="gallery-overlay">
-                <i className="fas fa-search-plus"></i>
-                <p>{image.caption}</p>
-              </div>
             </div>
           ))}
         </div>

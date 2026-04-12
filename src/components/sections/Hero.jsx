@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="hero-orb hero-orb-blue"></div>
       <div className="hero-video-overlay"></div>
       <div className="hero-bg">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920" alt="Gym Background" />
+        <img src="/assets/gallery/workout/15.jpeg" alt="Gym Background" />
       </div>
       <div className="hero-content">
         <div className="hero-text">
@@ -37,9 +37,6 @@ const Hero = () => {
           <div className="hero-buttons">
             <button className="btn btn-primary glow-btn" onClick={() => scrollToSection('contact')}>
               <i className="fas fa-bolt"></i> Join Now
-            </button>
-            <button className="btn btn-secondary" onClick={() => scrollToSection('plans')}>
-              <i className="fas fa-gift"></i> Free Trial
             </button>
             <button className="btn btn-outline" onClick={() => scrollToSection('gallery')}>
               <i className="fas fa-images"></i> View Gallery
