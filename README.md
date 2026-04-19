@@ -2,7 +2,7 @@
 
 **A modern, high-energy fitness website with dark + neon theme**
 
-![Flexxwell Fitness](https://img.shields.io/badge/Status-Live-success)
+![SK Body First Gym](https://img.shields.io/badge/Status-Live-success)
 ![Version](https://img.shields.io/badge/Version-1.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -10,7 +10,7 @@
 
 ## 🎯 Overview
 
-Flexxwell Fitness is a premium, modern gym website featuring a stunning dark theme with red and blue neon accents. The UI has been ported to **React 18 + Vite** while preserving the original HTML/CSS/JS design and interactions.
+SK Body First Gym is a premium, modern gym website featuring a stunning dark theme with red and blue neon accents. The UI has been ported to **React 18 + Vite** while preserving the original HTML/CSS/JS design and interactions.
 
 ## ✨ Features
 
@@ -93,18 +93,51 @@ Flexxwell Fitness is a premium, modern gym website featuring a stunning dark the
 - **Parallax Effects**: Hero section background movement
 - **Form Validation**: Contact form with basic validation
 
+### 📊 Admin Panel & Lead Management
+- **Firebase Authentication**: Secure admin login (email/password)
+- **Real-time Lead Dashboard**: View all gym membership inquiries in real-time
+- **Lead Filtering**: 
+  - Filter by Goal (Weight Loss, Muscle Building, Strength Training)
+  - Filter by Status (Not Talked, Talked, Joined)
+  - Live count display for each filter category
+- **Status Management**: Update lead status using horizontal radio buttons
+- **Lead Actions**: Delete inquiries with confirmation
+- **Mobile Responsive**: Fully optimized for tablets and mobile devices
+- **Analytics Dashboard**: 
+  - Goals distribution (Pie chart)
+  - Status distribution (Bar chart)
+  - Plans distribution (Radar chart)
+  - KPI metrics (Total Leads, Active, Conversion Rate, Pending)
+
+### 📋 Join Form Features
+- **Modal Form**: Pop-up form accessible from "Join Now" buttons
+- **Form Validation**:
+  - Name: Letters and spaces only
+  - Phone: Indian format (10 digits starting with 6-9)
+  - Real-time duplicate phone detection
+  - Gender selection (Male, Female, Other) with radio buttons
+  - All required fields must be filled before submission
+- **Auto-scroll**: Form fields automatically scroll into view when focused
+- **Membership Plans**: Dropdown with free trial + BASIC, PRO, ELITE options
+- **Fitness Goals**: Selection of Weight Loss, Muscle Building, Strength Training
+- **Firestore Integration**: All submissions saved to secure Firebase database
+
 ## 🛠️ Technologies Used
 
 - **React 18** with functional components & hooks
-- **Vite 5** for dev/build tooling
+- **Vite 7** for dev/build tooling
 - **Vanilla CSS** (original design preserved)
 - **Font Awesome 6.4.0** for icons
 - **Google Fonts** (Bebas Neue, Montserrat, Oswald)
+- **Firebase 12.11.0**: 
+  - Firestore for real-time database
+  - Authentication for admin login
+  - Hosting for deployment
 
 ## 📁 File Structure
 
 ```
-Flexxwell-Fitness-gym/
+SK-Body-First-Gym/
 ├── src/
 │   ├── App.jsx
 │   ├── main.jsx
@@ -127,25 +160,67 @@ Flexxwell-Fitness-gym/
 
 ## 🎯 Getting Started
 
+### Installation & Development
+
 1. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. **Run the dev server** (opens `index.html` automatically)
+2. **Configure Firebase**
+   - Create a `.env.local` file in the root directory
+   - Add your Firebase configuration variables:
+   ```
+   VITE_FIREBASE_API_KEY=your_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+   ```
+
+3. **Run the dev server**
    ```bash
    npm run dev
    ```
 
-3. **Build for production**
+4. **Build for production**
    ```bash
    npm run build
    ```
 
-4. **Preview the build**
+5. **Preview the build**
    ```bash
    npm run preview
    ```
+
+### Admin Panel Access
+
+- **Access Admin Panel**: Click the "Admin" link in the footer or navigate to `#/admin`
+- **Login**: Use your Firebase admin email and password
+- **Features**:
+  - View all gym membership inquiries in real-time
+  - Filter leads by fitness goal and status
+  - Update lead status (Not Talked, Talked, Joined)
+  - Delete leads
+  - View analytics dashboard with charts and metrics
+- **Security**: Admin must re-login every time for security
+
+### Firestore Database Structure
+
+The app uses a Firestore collection called `gym_leads` with the following fields:
+```javascript
+{
+  name: string,           // Member name (letters and spaces only)
+  phone: string,          // 10-digit Indian phone number
+  gender: string,         // Male, Female, or Other
+  goal: string,           // Weight Loss, Muscle Building, or Strength Training
+  plan: string,           // One Day Free Visit, BASIC, PRO, or ELITE
+  status: string,         // Not Talked, Talked, or Joined
+  timestamp: Date,        // When inquiry was submitted
+  statusUpdatedAt: Date   // When status was last updated
+}
+```
 
 ### Customizing Content (React)
 - **Brand name & nav links**: update `src/components/Navbar.jsx`
@@ -157,7 +232,67 @@ Flexxwell-Fitness-gym/
 - **Testimonials**: edit `src/components/Testimonials.jsx`
 - **Contact info & map**: edit `src/components/Contact.jsx`
 - **WhatsApp number**: update `src/components/FloatingButtons.jsx`
+- **Form validation rules**: edit validation functions in `src/components/TestForm.jsx`
+  - Modify phone format validation regex
+  - Customize required fields
+  - Add/remove fitness goals
+  - Change membership plans
 - **Colors & spacing**: adjust CSS variables in `src/index.css` under the `:root` block
+
+### Form Validation Reference
+
+The join form includes these validation rules:
+
+| Field | Rule | Error Message |
+|-------|------|---------------|
+| Name | Letters and spaces only | "Please enter a valid name" |
+| Phone | 10 digits, starts with 6-9 | "Please enter a valid Indian phone number" |
+| Phone | Not already in database | "Phone number already exists" |
+| Gender | Must select one (M/F/Other) | "Please select your gender" |
+| Goal | Must select one option | "Please select your fitness goal" |
+| Plan | Must select one option | "Please select a membership plan" |
+
+## 👨‍💼 Admin Panel Features
+
+### Dashboard Overview
+- **Real-time Lead Syncing**: All submissions appear instantly on the admin dashboard
+- **Leads Table**: Complete view of all gym membership inquiries with:
+  - Member name, phone (clickable tel link)
+  - Gender, fitness goal, selected plan
+  - Submission date & time
+  - Current status
+  - Actions (delete)
+
+### Filtering & Organization
+- **Goal Filter**: Filter leads by fitness goal (Weight Loss, Muscle Building, Strength Training)
+  - Live count display showing number of leads per goal
+  - "All Leads" option to remove filter
+- **Status Filter**: Filter leads by current status (Not Talked, Talked, Joined)
+  - Live count display showing number of leads per status
+  - "All Status" option to remove filter
+- **Combined Filtering**: Use both filters simultaneously for advanced queries
+
+### Status Management
+- **Horizontal Radio Buttons**: Update lead status directly from the table
+  - Not Talked (Gray)
+  - Talked (Purple)
+  - Joined (Blue)
+- **Real-time Updates**: Status changes sync immediately to Firestore
+
+### Analytics Dashboard
+- **Goals Distribution**: Pie chart showing breakdown of fitness goals
+- **Status Distribution**: Bar chart showing conversion pipeline
+- **Plans Distribution**: Radar chart showing membership plan preferences
+- **KPI Metrics**: 
+  - Total Leads count
+  - Active Leads
+  - Conversion Rate (%)
+  - Pending conversions
+
+### Mobile Responsiveness
+- Full responsive design for tablets (768px breakpoint)
+- Mobile optimization for phones (480px breakpoint)
+- Touch-friendly buttons and controls
 
 ### Deploy
 - **Netlify / Vercel**: run `npm run build` and deploy the `dist/` folder
@@ -238,6 +373,11 @@ The website is fully responsive with breakpoints at:
 
 ## 📝 To-Do List
 
+- [ ] Create Firebase project and set up Firestore database
+- [ ] Create Firebase admin account (email/password)
+- [ ] Add Firebase configuration to `.env.local`
+- [ ] Create `gym_leads` Firestore collection
+- [ ] Customize form validation rules for your requirements
 - [ ] Add your gym photos to public/gallery
 - [ ] Update all placeholder text with your gym's information
 - [ ] Replace phone numbers and email addresses
@@ -246,6 +386,8 @@ The website is fully responsive with breakpoints at:
 - [ ] Add your social media links
 - [ ] Optimize images for web
 - [ ] Set up analytics (Google Analytics, etc.)
+- [ ] Deploy to Firebase Hosting
+- [ ] Test admin panel with real leads
 
 ## 🤝 Support
 
@@ -279,6 +421,6 @@ This project is open source and available for personal and commercial use.
 
 ---
 
-**Built with 💪 for Flexxwell Fitness**
+**Built with 💪 for SK Body First Gym**
 
 *Transform Your Body. Transform Your Life.*
