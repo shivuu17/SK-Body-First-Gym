@@ -1,4 +1,4 @@
-const FloatingButtons = () => {
+const FloatingButtons = ({ onOpenJoinForm }) => {
   const scrollToContact = () => {
     const element = document.getElementById('contact')
     if (element) {
@@ -12,7 +12,7 @@ const FloatingButtons = () => {
 
   return (
     <>
-      <a onClick={scrollToContact} className="floating-join-btn" style={{ cursor: 'pointer' }}>
+      <a onClick={onOpenJoinForm} className="floating-join-btn" style={{ cursor: 'pointer' }}>
         <i className="fas fa-bolt"></i> Join Now
       </a>
       <a href="https://wa.me/918745861120" target="_blank" rel="noopener noreferrer" className="whatsapp-btn" title="Chat with us on WhatsApp">

@@ -1,6 +1,7 @@
-const Plans = () => {
+const Plans = ({ onOpenJoinForm }) => {
   const plans = [
     { name: "BASIC", icon: "running", price: "1,999", period: "1 month", features: [
+      { included: true, text: "One day free in gym" },
       { included: true, text: "Access to gym equipment" },
       { included: true, text: "Cardio & weight training" },
       { included: true, text: "Locker facility" },
@@ -10,6 +11,7 @@ const Plans = () => {
       { included: false, text: "Group classes" }
     ] },
     { name: "PRO", icon: "fire", price: "7,999", period: "6 month", popular: true, features: [
+      { included: true, text: "One day free in gym" },
       { included: true, text: "All Basic features" },
       { included: true, text: "8 personal training sessions" },
       { included: true, text: "Group classes (Yoga, Zumba)" },
@@ -19,6 +21,7 @@ const Plans = () => {
       { included: true, text: "Priority booking" }
     ] },
     { name: "ELITE", icon: "crown", price: "11,999", period: "1 year", features: [
+      { included: true, text: "One day free in gym" },
       { included: true, text: "All Pro features" },
       { included: true, text: "Unlimited personal training" },
       { included: true, text: "All group classes" },
@@ -66,7 +69,7 @@ const Plans = () => {
                   <li key={idx}><i className={`fas fa-${feature.included ? 'check' : 'times'}`}></i> {feature.text}</li>
                 ))}
               </ul>
-              <button onClick={scrollToContact} className={`plan-btn ${plan.popular ? 'glow-btn' : ''}`}>Get Started</button>
+              <button onClick={onOpenJoinForm} className={`plan-btn ${plan.popular ? 'glow-btn' : ''}`}>Get Started</button>
             </div>
           ))}
         </div>

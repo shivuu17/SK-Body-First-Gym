@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const Navbar = ({ onNavigate }) => {
+const Navbar = ({ onNavigate, onOpenJoinForm }) => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -51,9 +51,9 @@ const Navbar = ({ onNavigate }) => {
             <span className="nav-link" onClick={() => navigateToSection('gallery', 'Gallery')}>Gallery</span>
             <span className="nav-link" onClick={() => navigateToSection('plans', 'Plans')}>Plans</span>
             <span className="nav-link" onClick={() => navigateToSection('contact', 'Contact')}>Contact</span>
-            <button className="cta-btn" onClick={() => navigateToSection('contact', 'Contact')}>Join Now</button>
+            <button className="cta-btn" onClick={onOpenJoinForm}>Join Now</button>
           </div>
-          <button className="cta-btn mobile-join-btn" onClick={() => navigateToSection('contact', 'Contact')}>Join Now</button>
+          <button className="cta-btn mobile-join-btn" onClick={onOpenJoinForm}>Join Now</button>
           <div
             className={`hamburger ${menuOpen ? 'active' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}

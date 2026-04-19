@@ -1,4 +1,4 @@
-const Hero = () => {
+const Hero = ({ onOpenJoinForm }) => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     if (element) {
@@ -35,7 +35,7 @@ const Hero = () => {
             <span>Personal Training</span>
           </div>
           <div className="hero-buttons">
-            <button className="btn btn-primary glow-btn" onClick={() => scrollToSection('contact')}>
+            <button className="btn btn-primary glow-btn" onClick={onOpenJoinForm}>
               <i className="fas fa-bolt"></i> Join Now
             </button>
             <button className="btn btn-outline" onClick={() => scrollToSection('gallery')}>

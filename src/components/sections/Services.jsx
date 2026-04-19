@@ -1,4 +1,4 @@
-const Services = () => {
+const Services = ({ onOpenJoinForm }) => {
   const services = [
     { icon: "dumbbell", title: "Weight Training", description: "Build muscle, increase strength, and sculpt your dream physique with our state-of-the-art equipment and expert guidance.", features: ["On-site sessions", "Expert trainers"], quote: "Strength grows in moments when you think you can't go on." },
     { icon: "heartbeat", title: "Cardio Training", description: "Boost your endurance, burn calories, and improve cardiovascular health with our dynamic cardio programs.", features: ["Indoor & outdoor", "All fitness levels"], quote: "The body achieves what the mind believes." },
@@ -41,7 +41,7 @@ const Services = () => {
                   <span key={idx}><i className="fas fa-check"></i> {feature}</span>
                 ))}
               </div>
-              <button onClick={scrollToContact} className="service-btn glow-btn">Book Session</button>
+              <button onClick={onOpenJoinForm} className="service-btn glow-btn">Book Session</button>
               <div className="mini-quote">"{service.quote}"</div>
             </div>
           ))}

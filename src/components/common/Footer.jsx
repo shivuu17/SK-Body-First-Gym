@@ -83,7 +83,7 @@ const Footer = () => {
             <i className="fas fa-quote-right"></i>
           </div>
           <p className="copyright">
-            &copy; 2026 SK Body-First-Gym. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            &copy; 2026 SK Body-First-Gym. All Rights Reserved. | <a href="#/admin" style={{ color: '#aaa', fontSize: '12px', opacity: 0.7 }}>Admin</a>
           </p>
         </div>
       </div>
