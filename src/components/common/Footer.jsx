@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
               <li>
                 <span>Sunday</span>
-                <span>05:30 AM - 10:30 PM</span>
+                <span>06:00 AM - 10:30 AM</span>
               </li>
             </ul>
             <div className="footer-contact">
@@ -83,7 +83,7 @@ const Footer = () => {
             <i className="fas fa-quote-right"></i>
           </div>
           <p className="copyright">
-            &copy; 2026 SK Body-First-Gym. All Rights Reserved. | <a href="#/admin" style={{ color: '#aaa', fontSize: '12px', opacity: 0.7 }}>Admin</a>
+            &copy; 2026 SK Body-First-Gym. All Rights Reserved. | <a href="/admin" style={{ color: '#aaa', fontSize: '12px', opacity: 0.7 }}>Admin</a>
           </p>
         </div>
       </div>

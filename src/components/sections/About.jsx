@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const About = () => {
+  const showTrainersSection = false
   const [counts, setCounts] = useState({
     members: 0,
     trainers: 0,
@@ -111,10 +112,12 @@ const About = () => {
             <div className="stat-number">{counts.members}</div>
             <div className="stat-label">Active Members</div>
           </div>
-          <div className="stat-item">
-            <div className="stat-number">{counts.trainers}</div>
-            <div className="stat-label">Expert Trainers</div>
-          </div>
+          {showTrainersSection && (
+            <div className="stat-item">
+              <div className="stat-number">{counts.trainers}</div>
+              <div className="stat-label">Expert Trainers</div>
+            </div>
+          )}
           <div className="stat-item">
             <div className="stat-number">{counts.years}</div>
             <div className="stat-label">Years Experience</div>
@@ -169,29 +172,31 @@ const About = () => {
           </div>
           </div>
 
-          <div className="coaches-section">
-            <h3>Meet Our Expert Trainers</h3>
-            <div className="coaches-grid">
-              {coaches.map((coach, index) => (
-                <div key={index} className="coach-card">
-                  <div className="coach-img">
-                    <img src={coach.image} alt={coach.name} />
-                    <div className="coach-overlay">
-                      <div className="social-links">
-                        <a href="#"><i className="fab fa-instagram"></i></a>
-                        <a href="#"><i className="fab fa-facebook"></i></a>
+          {showTrainersSection && (
+            <div className="coaches-section">
+              <h3>Meet Our Expert Trainers</h3>
+              <div className="coaches-grid">
+                {coaches.map((coach, index) => (
+                  <div key={index} className="coach-card">
+                    <div className="coach-img">
+                      <img src={coach.image} alt={coach.name} />
+                      <div className="coach-overlay">
+                        <div className="social-links">
+                          <a href="#"><i className="fab fa-instagram"></i></a>
+                          <a href="#"><i className="fab fa-facebook"></i></a>
+                        </div>
                       </div>
                     </div>
+                    <div className="coach-info">
+                      <h4>{coach.name}</h4>
+                      <p className="specialization">{coach.specialization}</p>
+                      <p className="coach-desc">{coach.description}</p>
+                    </div>
                   </div>
-                  <div className="coach-info">
-                    <h4>{coach.name}</h4>
-                    <p className="specialization">{coach.specialization}</p>
-                    <p className="coach-desc">{coach.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

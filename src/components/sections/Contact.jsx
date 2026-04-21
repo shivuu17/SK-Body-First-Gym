@@ -22,7 +22,7 @@ const Contact = () => {
                 <div className="info-item"><i className="fab fa-whatsapp"></i><div><h4>WhatsApp</h4><p>+91 8745861120 (Ashwani Chauhan)</p></div></div>
                 <div className="info-item"><i className="fas fa-phone-alt"></i><div><h4>Emergency</h4><p>+91 9582461120 (Shekhar Thakur)</p></div></div>
                 <div className="info-item"><i className="fas fa-envelope"></i><div><h4>Email</h4><p>skbodyfirstgym@gmail.com</p></div></div>
-                <div className="info-item"><i className="fas fa-clock"></i><div><h4>Opening Hours</h4><p>7 Days Gym Open<br />Mon - Sat: 05:30 AM - 10:30 PM<br />Sunday: 05:30 AM - 10:30 PM</p></div></div>
+                <div className="info-item"><i className="fas fa-clock"></i><div><h4>Opening Hours</h4><p>7 Days Gym Open<br />Mon - Sat: 05:30 AM - 10:30 PM<br />Sunday: 06:00 AM - 10:30 AM</p></div></div>
               </div>
             </div>
           </div>

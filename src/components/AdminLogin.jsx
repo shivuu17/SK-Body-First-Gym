@@ -221,7 +221,7 @@ export default function AdminLogin({ onLogin }) {
           </button>
         </form>
 
-        <a href="#/" style={{
+        <a href="https://sk-body-first-gym.web.app/" style={{
           display: 'block',
           textAlign: 'center',
           marginTop: '20px',
