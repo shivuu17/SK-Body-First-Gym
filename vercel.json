@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://sk-body-first-gym.web.app/",
+      "permanent": true
+    }
+  ]
+}
